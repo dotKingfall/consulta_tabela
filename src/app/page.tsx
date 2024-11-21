@@ -1,9 +1,32 @@
-import Image from "next/image";
+'use client';
+
+function changeTheme(document: Document){
+  var box = document.getElementById('themeSelector') as HTMLInputElement;
+
+  if(box!.checked == true){
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+  else{
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+}
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <header></header>
+    <div>
+      <header>
+        <script></script>
+
+      <label className="switch">
+        <input id="themeSelector" type="checkbox" onClick={() => changeTheme(document)} />
+        <span className="slider"></span>
+      </label>
+
+        <div id="topbar">
+          <div>Consulta de Valores</div>
+        </div>
+      </header>
+
       <main>
       </main>
       <footer></footer>
