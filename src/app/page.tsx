@@ -1,7 +1,7 @@
 'use client';
 
 function changeTheme(document: Document){
-  let box = document.getElementById('themeSelector') as HTMLInputElement;
+  const box = document.getElementById('themeSelector') as HTMLInputElement;
 
   if(box!.checked == true){
     document.documentElement.setAttribute('data-theme', 'dark');
