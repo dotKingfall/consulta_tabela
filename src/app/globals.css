@@ -104,6 +104,10 @@ input:checked + .slider:before {
   font-size: 1.2em;
 }
 
+main{
+  font-family: 'Roboto Condensed';
+}
+
 #idade{
   background-color: hsl(var(--twc-bg_main));
   color: hsl(var(--twc-text_main));
@@ -162,6 +166,46 @@ input[type=radio]{
   color: #F5F5F5;
 }
 
+div table{
+  width: 100%;
+}
+
 #textfields{
-  margin: 20px;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+.editable{
+  border: 3px solid #097969;
+
+  min-width: 45vw;
+  min-height: 50vh;
+
+  max-width: 45vw;
+  max-height: 50vh;
+
+  padding: 5px;
+
+  overflow-y: scroll;
+  scrollbar-color: #097969 hsl(var(--twc-bg_main));
+}
+
+tbody{
+  table-layout: fixed;
+}
+
+.cop{
+  font-weight: 800;
+}
+
+.copTitle{
+  font-size: 1.1em;
+  padding-left: 5px;
+}
+
+.copybutton{
+  background-color: #097969;
+  color: #F5F5F5;
+  padding: 5px;
+  margin-left: 1px;
 }

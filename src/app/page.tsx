@@ -33,7 +33,7 @@ import j_GEParcial from '../tables/empresarial/goiania_empresarial_parcial.json'
 import j_GETotal from '../tables/empresarial/goiania_empresarial_total.json';
 import { read } from 'fs';
 import { Empresarial, Individual, Onde } from './classes';
-import { changeBorder, countPeople, populatePlace } from './mainscript';
+import { changeBorder, copyToClipboard, countPeople, populatePlace } from './mainscript';
 
 //I don't wanna hear about it, I am sleepy and it get the job done, be merciful with my many arrays XD
 export var places:Onde[] = [];
@@ -70,8 +70,8 @@ export var geTotal:Empresarial[] = [];
 
 readJson();
 
-let ispj = 0;
-let lugar = "0";
+export let ispj = 0;
+export let lugar = "0";
 
 export default function Home() {
   return (
@@ -121,8 +121,36 @@ export default function Home() {
         <div>total pessoas</div>
 
         <div id='textfields'>
-          <div contentEditable></div>
-          <div contentEditable></div>
+          <table>
+            <thead>
+              <tr>
+                <td className='copTitle'>Coparticipação <span className='cop'>Parcial</span></td>
+                <td className='copTitle'>Coparticipação <span className='cop'>Total</span></td>
+              </tr>
+            </thead>
+            
+              <tbody>
+              <tr>
+                <td className='h-80'>
+                  <div contentEditable className='editable' id='edtb1'></div>
+                </td>
+                <td className='h-80'>
+                  <div contentEditable className='editable' id='edtb2'></div>
+                </td>
+              </tr>
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <td>
+                  <button className='copybutton' onClick={() => copyToClipboard(document.getElementById('edtb1')!)}>Copiar</button>
+                </td>
+                <td>
+                  <button className='copybutton' onClick={() => copyToClipboard(document.getElementById('edtb2')!)}>Copiar</button>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
       </main>
 

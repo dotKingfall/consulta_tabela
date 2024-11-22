@@ -1,5 +1,5 @@
 import { createElement, InputHTMLAttributes } from "react";
-import { places } from "./page";
+import { ispj, places } from "./page";
 
 export function populatePlace(document: Document){
     const parent = document.getElementById('estadoOptions');
@@ -27,8 +27,28 @@ export function changeBorder(document: Document, dowhat: boolean){
     }
 }
 
+export function copyToClipboard(element: HTMLElement){
+    navigator.clipboard.writeText(element.innerHTML);
+}
+
 export function countPeople(document: Document){
     var tmp = document.getElementById('idade') as HTMLInputElement;
     let value = tmp.value;
-    const people = value.split(',');
+    const tmpArr = value.split(',');
+    var ages:Number[] =  [];
+
+    tmpArr.forEach((item) => {
+        var tmp = parseInt(item);
+
+        if(isNaN(tmp) == false){
+            ages.push(tmp);
+        }
+;    });
+
+    if(ispj === 0){
+        let imgSrc = '../tables/images/individual';
+    }
+    else{
+        let imgSrc = '../tables/images/empresarial';
+    }
 }
