@@ -8,9 +8,10 @@
   font-weight: normal;
 }
 
-html{
-  transition-property: background-color;
-  transition-duration: .4s;
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url(fonts/RobotoCondensed-Regular.ttf);
+  font-weight: normal;
 }
 
 body {
@@ -23,7 +24,7 @@ body {
   width: 100%;
   color: #F5F5F5;
 
-  font-size: 4vmax;
+  font-size: 2em;
   font-family: "Fira Sans";
 
   padding: 15px;
@@ -37,7 +38,7 @@ body {
   position: absolute;
   display: inline-block;
 
-  top: 2.5vmax;
+  top: 1.3em;
   right: 3vmin;
   width: 60px;
   height: 34px;
@@ -87,4 +88,80 @@ input:checked + .slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
+}
+
+#bottomOptions{
+  width: 100%;
+
+  padding-bottom: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  background-color: #097969;
+  color: #F5F5F5;
+
+  font-family: 'Roboto Condensed';
+  font-size: 1.2em;
+}
+
+#idade{
+  background-color: hsl(var(--twc-bg_main));
+  color: hsl(var(--twc-text_main));
+}
+
+#idade::placeholder{
+  padding-left: 2px;
+}
+
+#bottomOptions select{
+  color: #097969;
+  overflow: hidden;
+  border: none;
+}
+
+#radials{
+  float: inline-end;
+}
+
+#radials label{
+  padding: 4px;
+  cursor: pointer;
+}
+
+#pflabel{
+  border: thin solid #F5F5F5;
+}
+
+
+input[type=radio]{
+  cursor: pointer;
+  opacity: 0;
+  
+  width: 15px;
+  height: auto;
+}
+
+#ages{
+  padding-top: 12px;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#ages input{
+  width: 70%;
+  border: 3px solid #097969;
+  padding-left: 10px;
+}
+
+#ages button{
+  width: auto;
+  float: inline-end;
+
+  background-color: #097969;
+  border: 5px solid rgba(9, 121, 105, .5);
+  color: #F5F5F5;
+}
+
+#textfields{
+  margin: 20px;
 }

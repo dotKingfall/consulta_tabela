@@ -1,4 +1,4 @@
-class Individual{
+export class Individual{
     ac: number;
     amb: number;
     enf: number;
@@ -12,7 +12,7 @@ class Individual{
     }
 }
 
-class Empresarial{
+export class Empresarial{
     ac: number;
     sacomp: number;
     enf: number;
@@ -26,7 +26,7 @@ class Empresarial{
     }
 }
 
-class Local{
+export class Onde{
     id: number;
     name: string;
 
