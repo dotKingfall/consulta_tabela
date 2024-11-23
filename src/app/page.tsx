@@ -31,9 +31,9 @@ import j_GTotal from '../tables/individual/goiania_individual_total.json';
 //Goiânia Empresarial JSON
 import j_GEParcial from '../tables/empresarial/goiania_empresarial_parcial.json';
 import j_GETotal from '../tables/empresarial/goiania_empresarial_total.json';
-import { read } from 'fs';
+
 import { Empresarial, Individual, Onde } from './classes';
-import { changeBorder, copyToClipboard, countPeople, populatePlace } from './mainscript';
+import { changeBorder1, changeBorder2, copyToClipboard, countPeople, populatePlace } from './mainscript';
 
 //I don't wanna hear about it, I am sleepy and it get the job done, be merciful with my many arrays XD
 export var places:Onde[] = [];
@@ -71,6 +71,7 @@ export var geTotal:Empresarial[] = [];
 readJson();
 
 export let ispj = 0;
+export let isOdonto = 0;
 export let lugar = "0";
 
 export default function Home() {
@@ -81,7 +82,7 @@ export default function Home() {
 
       <header>
         <label className="switch">
-          <input id="themeSelector" type="checkbox" onClick={() => changeTheme(document)} />
+          <input id="themeSelector" type="checkbox" defaultChecked onClick={() => changeTheme(document)} />
           <span className="slider"></span>
         </label>
 
@@ -94,31 +95,45 @@ export default function Home() {
         <div id='bottomOptions'>
           <form>
             <label>Em:   </label>
-            <select name="estado" id="estadoOptions" onChange={(e) => {lugar = e.currentTarget.value}}>
+            <select name="estado" id="estadoOptions" onChange={(e) => {lugar = e.currentTarget.value;}}>
               <option>Carregando...</option>
             </select>
 
-            <div id='radials'>
-              <label id='pflabel' onClick={() => {
+            <div id='radialsPersona'>
+              <label id='pflabel' className='selects' onClick={() => {
                 ispj = 0;
-                var tmp = document.getElementById('pf') as HTMLInputElement;tmp.checked = true; changeBorder(document, false)}}>P. Física</label>
+                var tmp = document.getElementById('pf') as HTMLInputElement;tmp.checked = true; changeBorder1(document, false)}}>P. Física</label>
               <input type='radio' name='persona' value='PF' id='pf' defaultChecked></input>
               
-              <label id='pjlabel' onClick={() => {
+              <label id='pjlabel' className='selects' onClick={() => {
                 ispj = 1;
-                var tmp = document.getElementById('pj') as HTMLInputElement; tmp.checked = true; changeBorder(document, true)}}>P. Jurídica</label>
+                var tmp = document.getElementById('pj') as HTMLInputElement; tmp.checked = true; changeBorder1(document, true)}}>P. Jurídica</label>
               <input type='radio' name='persona' value='PJ' id='pj'></input>
+            </div>
+
+            <div id='radialsOdonto'>
+              <label id='solabel' className='selects' onClick={() => {
+                isOdonto = 0;
+                var tmp = document.getElementById('ooff') as HTMLInputElement;tmp.checked = true; changeBorder2(document, false)}}>C/ Odonto</label>
+              <input type='radio' name='odonto' value='off' id='ooff' defaultChecked></input>
+              
+              <label id='colabel' className='selects' onClick={() => {
+                isOdonto = 1;
+                var tmp = document.getElementById('oon') as HTMLInputElement; tmp.checked = true; changeBorder2(document, true)}}>S/ Odonto</label>
+              <input type='radio' name='odonto' value='on' id='oon'></input>
             </div>
           </form>
         </div>
 
         <div id='ages'>
           <input type='text' inputMode='numeric' placeholder='Idade (Separadas por vírgula)' id='idade'></input>
-          <button onClick={() => {countPeople(document)}}>Generate</button>
+          <button onClick={() => {countPeople(document)}}>Gerar</button>
         </div>
 
-        <div>Baseado na tabela (a)</div>
-        <div>total pessoas</div>
+        <div id='meta'>
+          <span>Baseado nas tabelas: <span id='m1'></span></span>
+          <div className='float-end'>Total pessoas: <span id='m2'>0</span></div>
+        </div>
 
         <div id='textfields'>
           <table>

@@ -22,7 +22,7 @@ body {
 #topbar{
   background-color: #097969;
   width: 100%;
-  color: #F5F5F5;
+  color: hsl(var(--twc-bg_main));
 
   font-size: 2em;
   font-family: "Fira Sans";
@@ -71,7 +71,7 @@ body {
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: hsl(var(--twc-button_main));
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -98,7 +98,7 @@ input:checked + .slider:before {
   padding-right: 15px;
 
   background-color: #097969;
-  color: #F5F5F5;
+  color: hsl(var(--twc-bg_main));
 
   font-family: 'Roboto Condensed';
   font-size: 1.2em;
@@ -121,19 +121,43 @@ main{
   color: #097969;
   overflow: hidden;
   border: none;
+  background-color: hsl(var(--twc-bg_main));
 }
 
-#radials{
+#radialsPersona{
   float: inline-end;
 }
 
-#radials label{
+#radialsPersona label{
+  padding: 4px;
+  cursor: pointer;
+}
+
+
+#radialsOdonto{
+  float: inline-end;
+}
+
+#radialsOdonto label{
   padding: 4px;
   cursor: pointer;
 }
 
 #pflabel{
-  border: thin solid #F5F5F5;
+  border: thin solid hsl(var(--twc-bg_main));
+  color:#097969;
+  background-color:hsl(var(--twc-bg_main));
+}
+
+#solabel{
+  border: thin solid hsl(var(--twc-bg_main));
+  color:#097969;
+  background-color:hsl(var(--twc-bg_main));
+}
+
+.selects:hover{
+  color: #097969;
+  background-color: hsl(var(--twc-bg_main));
 }
 
 
@@ -158,12 +182,23 @@ input[type=radio]{
 }
 
 #ages button{
-  width: auto;
+  width: 20%;
+  font-size: 1.2em;
   float: inline-end;
 
   background-color: #097969;
   border: 5px solid rgba(9, 121, 105, .5);
-  color: #F5F5F5;
+  color: hsl(var(--twc-bg_main));
+}
+
+#meta{
+  width: 70%;
+  color: hsl(var(--twc-text_secondary));
+
+  padding-left: 5%;
+  padding-right: 3%;
+
+  max-lines: 2;
 }
 
 div table{
@@ -190,22 +225,30 @@ div table{
   scrollbar-color: #097969 hsl(var(--twc-bg_main));
 }
 
+#edtb1, #edtb2{
+  opacity: .75;
+}
+
 tbody{
   table-layout: fixed;
 }
 
 .cop{
   font-weight: 800;
+  color: hsl(var(--twc-text_secondary));
 }
 
 .copTitle{
   font-size: 1.1em;
   padding-left: 5px;
+  color: hsl(var(--twc-text_secondary));
 }
 
 .copybutton{
   background-color: #097969;
-  color: #F5F5F5;
+  color: hsl(var(--twc-bg_main));
   padding: 5px;
+
   margin-left: 1px;
+  margin-top: 5px;
 }

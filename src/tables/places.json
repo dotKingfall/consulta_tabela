@@ -1,14 +1,14 @@
 [
   {
-    "id": 1,
-    "name": "Goiânia - GO"
-  },
-  {
-    "id": 2,
+    "id": 0,
     "name": "Anápolis - GO"
   },
   {
-    "id": 3,
+    "id": 1,
     "name": "Brasília - DF"
+  },
+  {
+    "id": 2,
+    "name": "Goiânia - GO"
   }
 ]

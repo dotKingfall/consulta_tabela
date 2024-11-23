@@ -1,3 +1,59 @@
+export class PessoaF{
+    ambOP: number;
+    enfOP: number;
+    apOP: number;
+
+    ambOT: number;
+    enfOT: number;
+    apOT: number;
+
+    ambP: number;
+    enfP: number;
+    apP: number;
+
+    ambT: number;
+    enfT: number;
+    apT: number;
+
+    constructor(ambOP: number, enfOP: number, apOP: number, ambOT: number, enfOT: number, apOT: number, ambP: number, enfP: number, apP: number, ambT: number, enfT: number, apT: number,){
+        this.ambOP = ambOP;
+        this.enfOP = enfOP;
+        this.apOP = apOP;
+
+        this.ambOT = ambOT;
+        this.enfOT = enfOT;
+        this.apOT = apOT;
+
+        this.ambP = ambP;
+        this.enfP = enfP;
+        this.apP = apP;
+
+        this.ambT = ambT;
+        this.enfT = enfT;
+        this.apT = apT;
+    }
+}
+
+export class PessoaJ{
+    sacompP: number;
+    enfP: number;
+    apP: number;
+
+    sacompT: number;
+    enfT: number;
+    apT: number;
+
+    constructor(sacompP: number, enfP: number, apP: number, sacompT: number, enfT: number, apT: number,){
+        this.sacompP = sacompP;
+        this.enfP = enfP;
+        this.apP = apP;
+
+        this.sacompT = sacompT;
+        this.enfT = enfT;
+        this.apT = apT;
+    }
+}
+
 export class Individual{
     ac: number;
     amb: number;
