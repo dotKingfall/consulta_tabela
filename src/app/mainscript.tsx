@@ -1,6 +1,7 @@
 import { createElement, InputHTMLAttributes } from "react";
 import { aeParcial, aeTotal, aOdontoParcial, aOdontoTotal, aParcial, aTotal, deParcial, deTotal, dOdontoParcial, dOdontoTotal, dParcial, dTotal, geParcial, geTotal, gOdontoParcial, gOdontoTotal, gParcial, gTotal, ispj, lugar, places } from "./page";
 import { PessoaF, PessoaJ } from "./classes";
+import { write } from "fs";
 
 export function populatePlace(document: Document){
     const parent = document.getElementById('estadoOptions');
@@ -175,4 +176,9 @@ export function countPeople(document: Document){
     pfArr = []; pjArr = [];
 
     document.getElementById('m2')!.innerHTML = total.toString();
+    writeMessage(document, pfArr, pjArr);
+}
+
+function writeMessage(document: Document, pfArr: object, pjArr: object){
+    //
 }

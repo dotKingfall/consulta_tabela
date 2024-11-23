@@ -102,12 +102,16 @@ export default function Home() {
             <div id='radialsPersona'>
               <label id='pflabel' className='selects' onClick={() => {
                 ispj = 0;
-                var tmp = document.getElementById('pf') as HTMLInputElement;tmp.checked = true; changeBorder1(document, false)}}>P. Física</label>
+                var tmp = document.getElementById('pf') as HTMLInputElement;tmp.checked = true;
+                document.getElementById('radialsOdonto')!.style.display = 'initial';
+                changeBorder1(document, false)}}>P. Física</label>
               <input type='radio' name='persona' value='PF' id='pf' defaultChecked></input>
               
               <label id='pjlabel' className='selects' onClick={() => {
                 ispj = 1;
-                var tmp = document.getElementById('pj') as HTMLInputElement; tmp.checked = true; changeBorder1(document, true)}}>P. Jurídica</label>
+                var tmp = document.getElementById('pj') as HTMLInputElement; tmp.checked = true;
+                document.getElementById('radialsOdonto')!.style.display = 'none';
+                changeBorder1(document, true)}}>P. Jurídica</label>
               <input type='radio' name='persona' value='PJ' id='pj'></input>
             </div>
 

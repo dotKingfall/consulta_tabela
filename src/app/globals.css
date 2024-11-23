@@ -110,7 +110,7 @@ main{
 
 #idade{
   background-color: hsl(var(--twc-bg_main));
-  color: hsl(var(--twc-text_main));
+  color: hsl(var(--twc-text_main)); opacity: .75;
 }
 
 #idade::placeholder{
