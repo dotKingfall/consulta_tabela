@@ -71,7 +71,7 @@ export var geTotal:Empresarial[] = [];
 readJson();
 
 export let ispj = 0;
-export let isOdonto = 0;
+export let isOdonto = 1;
 export let lugar = "0";
 
 export default function Home() {
@@ -117,12 +117,12 @@ export default function Home() {
 
             <div id='radialsOdonto'>
               <label id='solabel' className='selects' onClick={() => {
-                isOdonto = 0;
+                isOdonto = 1;
                 var tmp = document.getElementById('ooff') as HTMLInputElement;tmp.checked = true; changeBorder2(document, false)}}>C/ Odonto</label>
               <input type='radio' name='odonto' value='off' id='ooff' defaultChecked></input>
               
               <label id='colabel' className='selects' onClick={() => {
-                isOdonto = 1;
+                isOdonto = 0;
                 var tmp = document.getElementById('oon') as HTMLInputElement; tmp.checked = true; changeBorder2(document, true)}}>S/ Odonto</label>
               <input type='radio' name='odonto' value='on' id='oon'></input>
             </div>
@@ -134,8 +134,7 @@ export default function Home() {
           <button onClick={() => {countPeople(document)}}>Gerar</button>
         </div>
 
-        <div id='meta'>
-          <span>Baseado nas tabelas: <span id='m1'></span></span>
+        <div className='meta'>
           <div className='float-end'>Total pessoas: <span id='m2'>0</span></div>
         </div>
 
@@ -173,7 +172,21 @@ export default function Home() {
         </div>
       </main>
 
-      <footer></footer>
+      <footer>
+        <div id='footerimgs'>
+          <div className='meta'>
+            <span>Baseado nas tabelas: <span id='m1'></span></span>
+          </div>
+          <div className='imagesRow'>
+            <div className='imagesColumn'>
+              <img alt='img1' id='img1'></img>
+            </div>
+            <div className='imagesColumn'>
+              <img alt='img2' id='img2'></img>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

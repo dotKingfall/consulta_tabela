@@ -104,7 +104,7 @@ input:checked + .slider:before {
   font-size: 1.2em;
 }
 
-main{
+main, #footerimgs{
   font-family: 'Roboto Condensed';
 }
 
@@ -191,7 +191,7 @@ input[type=radio]{
   color: hsl(var(--twc-bg_main));
 }
 
-#meta{
+.meta{
   width: 70%;
   color: hsl(var(--twc-text_secondary));
 
@@ -227,6 +227,7 @@ div table{
 
 #edtb1, #edtb2{
   opacity: .75;
+  white-space: pre;
 }
 
 tbody{
@@ -251,4 +252,32 @@ tbody{
 
   margin-left: 1px;
   margin-top: 5px;
+}
+
+#footerimgs{
+  display: none;
+}
+
+#img1, #img2{
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.imagesColumn{
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+.imagesRow::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#f1, #f2, #f3, #f4, #f5, #f6{
+  color: #097969;
+  font-family: 'Roboto Condensed';
+  font-size: 1.2em;
 }

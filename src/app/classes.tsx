@@ -1,4 +1,6 @@
 export class PessoaF{
+    age: number;
+
     ambOP: number;
     enfOP: number;
     apOP: number;
@@ -15,7 +17,9 @@ export class PessoaF{
     enfT: number;
     apT: number;
 
-    constructor(ambOP: number, enfOP: number, apOP: number, ambOT: number, enfOT: number, apOT: number, ambP: number, enfP: number, apP: number, ambT: number, enfT: number, apT: number,){
+    constructor(age:number, ambOP: number, enfOP: number, apOP: number, ambOT: number, enfOT: number, apOT: number, ambP: number, enfP: number, apP: number, ambT: number, enfT: number, apT: number,){
+        this.age = age;
+        
         this.ambOP = ambOP;
         this.enfOP = enfOP;
         this.apOP = apOP;
@@ -35,6 +39,8 @@ export class PessoaF{
 }
 
 export class PessoaJ{
+    age: number;
+
     sacompP: number;
     enfP: number;
     apP: number;
@@ -43,7 +49,9 @@ export class PessoaJ{
     enfT: number;
     apT: number;
 
-    constructor(sacompP: number, enfP: number, apP: number, sacompT: number, enfT: number, apT: number,){
+    constructor(age: number, sacompP: number, enfP: number, apP: number, sacompT: number, enfT: number, apT: number,){
+        this.age = age;
+
         this.sacompP = sacompP;
         this.enfP = enfP;
         this.apP = apP;
