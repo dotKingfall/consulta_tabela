@@ -140,7 +140,7 @@ function copyToClipboard(element: HTMLElement){
 function countPeople(document: Document){
     const tmp = document.getElementById('idade') as HTMLInputElement;
     const value = tmp.value;
-    const tmpArr = value.split(',');
+    const tmpArr = value.split('.');
     const ages:number[] =  [];
 
     tmpArr.forEach((item) => {
@@ -486,7 +486,7 @@ export default function Home() {
         </div>
 
         <div id='ages'>
-          <input type='text' inputMode='numeric' placeholder='Idade (Separadas por vírgula)' id='idade'></input>
+          <input type='text' inputMode='numeric' placeholder='Idade (Separadas por ponto)' id='idade'></input>
           <button onClick={() => {countPeople(document)}}>Gerar</button>
         </div>
 
