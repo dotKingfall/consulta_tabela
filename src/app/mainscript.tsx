@@ -92,7 +92,8 @@ export function countPeople(document: Document){
         imgSrc = '/images/individual';
 
         ages.forEach((item) => {
-            if(item <= 23){position = 1;} //I wonder why switch case doesn't work
+            if(item <= 18){}
+            else if(item <= 23){position = 1;} //I wonder why switch case doesn't work
             else if(item <= 28){position = 2;}
             else if(item <= 33){position = 3;}
             else if(item <= 38){position = 4;}
@@ -101,8 +102,6 @@ export function countPeople(document: Document){
             else if(item <= 53){position = 7;}
             else if(item <= 58){position = 8;}
             else{position = 9;}
-
-            //TODO URGENT FIX THIS
     
             if(parseInt(lugar) == 0){
                 var el1 = aOdontoParcial[position];
@@ -137,7 +136,8 @@ export function countPeople(document: Document){
         imgSrc = '/images/empresarial';
 
         ages.forEach((item) => {
-            if(item <= 23){position = 1;} //I wonder why switch case doesn't work
+            if(item <= 18){}
+            else if(item <= 23){position = 1;} //I wonder why switch case doesn't work
             else if(item <= 28){position = 2;}
             else if(item <= 33){position = 3;}
             else if(item <= 38){position = 4;}
@@ -188,6 +188,8 @@ function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: Array<Pe
     var e1 = document.getElementById('edtb1')!;
     var e2 = document.getElementById('edtb2')!;
 
+    var real = new Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'});
+
     if(ispj === 0){
         var ambPS = '';
         var enfPS = '';
@@ -201,31 +203,56 @@ function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: Array<Pe
         var enfTitle = 'ENFERMARIA\n';
         var apTitle = 'APARTAMENTO\n';
 
+        let tAmb1 = 0;
+        let tEnf1 = 0;
+        let tAp1 = 0;
+
+        let tAmb2 = 0;
+        let tEnf2 = 0;
+        let tAp2 = 0;
+
         if(isOdonto === 1){
             pfArr.forEach((person) => {
-                ambPS += `${person.age} anos: R$ ${person.ambOP}\r\n`;
-                enfPS += `${person.age} anos: R$ ${person.enfOP}\r\n`;
-                apPS +=`${person.age} anos: R$ ${person.apOP}\r\n`;
+                ambPS += `${person.age} anos: ${real.format(person.ambOP)}\r\n`;
+                enfPS += `${person.age} anos: ${real.format(person.enfOP)}\r\n`;
+                apPS +=`${person.age} anos: ${real.format(person.apOP)}\r\n`;
     
-                ambTS += `${person.age} anos: R$ ${person.ambOT}\r\n`;
-                enfTS += `${person.age} anos: R$ ${person.enfOT}\r\n`;
-                apTS +=`${person.age} anos: R$ ${person.apOT}\r\n`;
+                ambTS += `${person.age} anos: ${real.format(person.ambOT)}\r\n`;
+                enfTS += `${person.age} anos: ${real.format(person.enfOT)}\r\n`;
+                apTS +=`${person.age} anos: ${real.format(person.apOT)}\r\n`;
+
+                tAmb1 += person.ambOP;
+                tEnf1 += person.enfOP;
+                tAp1 += person.apOP;
+
+                tAmb2 += person.ambOT;
+                tEnf2 += person.enfOT;
+                tAp2 += person.apOT;
+
             });
         }
         else{
             pfArr.forEach((person) => {
-                ambPS += `${person.age} anos: R$ ${person.ambP}\r\n`;
-                enfPS += `${person.age} anos: R$ ${person.enfP}\r\n`;
-                apPS +=`${person.age} anos: R$ ${person.apP}\r\n`;
+                ambPS += `${person.age} anos: ${real.format(person.ambP)}\r\n`;
+                enfPS += `${person.age} anos: ${real.format(person.enfP)}\r\n`;
+                apPS +=`${person.age} anos: ${real.format(person.apP)}\r\n`;
     
-                ambTS += `${person.age} anos: R$ ${person.ambT}\r\n`;
-                enfTS += `${person.age} anos: R$ ${person.enfT}\r\n`;
-                apTS +=`${person.age} anos: R$ ${person.apT}\r\n`;
+                ambTS += `${person.age} anos: ${real.format(person.ambT)}\r\n`;
+                enfTS += `${person.age} anos: ${real.format(person.enfT)}\r\n`;
+                apTS +=`${person.age} anos: ${real.format(person.apT)}\r\n`;
+
+                tAmb1 += person.ambP;
+                tEnf1 += person.enfP;
+                tAp1 += person.apP;
+                
+                tAmb2 += person.ambT;
+                tEnf2 += person.enfT;
+                tAp2 += person.apT;
             });
         }
 
-        e1.innerHTML = `<span id="f1">${ambTitle}</span>${ambPS}\r\n<span id="f2">${enfTitle}</span>${enfPS}\r\n<span id="f3">${apTitle}</span>${apPS}`;
-        e2.innerHTML = `<span id="f4">${ambTitle}</span>${ambTS}\r\n<span id="f5">${enfTitle}</span>${enfTS}\r\n<span id="f6">${apTitle}</span>${apTS}`;
+        e1.innerHTML = `<span id="f1">${ambTitle}</span>${ambPS}Total ao mês: ${real.format(tAmb1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}`;
+        e2.innerHTML = `<span id="f4">${ambTitle}</span>${ambTS}Total ao mês: ${real.format(tAmb2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}`;
     }
     else{
         var sacompPS = '';
@@ -240,31 +267,53 @@ function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: Array<Pe
         var enfTitle = 'ENFERMARIA\n';
         var apTitle = 'APARTAMENTO\n';
 
+        let tSacomp1 = 0;
+        let tEnf1 = 0;
+        let tAp1 = 0;
+
+        let tSacomp2 = 0;
+        let tEnf2 = 0;
+        let tAp2 = 0;
+
         if(parseInt(lugar) != 1){
             pjArr.forEach((person) => {
-                enfPS += `${person.age} anos: R$ ${person.enfP}\r\n`;
-                apPS += `${person.age} anos: R$ ${person.apP}\r\n`;
+                enfPS += `${person.age} anos: ${real.format(person.enfP)}\r\n`;
+                apPS += `${person.age} anos: ${real.format(person.apP)}\r\n`;
 
-                enfTS += `${person.age} anos: R$ ${person.enfT}\r\n`;
-                apTS += `${person.age} anos: R$ ${person.apT}\r\n`;
+                enfTS += `${person.age} anos: ${real.format(person.enfT)}\r\n`;
+                apTS += `${person.age} anos: ${real.format(person.apT)}\r\n`;
+
+                tEnf1 += person.enfP;
+                tAp1 += person.apP;
+
+                tEnf2 += person.enfT;
+                tAp2 += person.apT;
             });
 
-            e1.innerHTML = `<span id="f2">${enfTitle}</span>${enfPS}\r\n<span id="f3">${apTitle}</span>${apPS}`;
-            e2.innerHTML = `<span id="f5">${enfTitle}</span>${enfTS}\r\n<span id="f6">${apTitle}</span>${apTS}`;
+            e1.innerHTML = `<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n`;
+            e2.innerHTML = `<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}\r\n`;
         }
         else{
             pjArr.forEach((person) => {
-                sacompPS += `${person.age} anos: R$ ${person.sacompP}\r\n`
-                enfPS += `${person.age} anos: R$ ${person.enfP}\r\n`;
-                apPS += `${person.age} anos: R$ ${person.apP}\r\n`;
+                sacompPS += `${person.age} anos: ${real.format(person.sacompP)}\r\n`
+                enfPS += `${person.age} anos: ${real.format(person.enfP)}\r\n`;
+                apPS += `${person.age} anos: ${real.format(person.apP)}\r\n`;
                 
-                sacompTS += `${person.age} anos: R$ ${person.sacompT}\r\n`
-                enfTS += `${person.age} anos: R$ ${person.enfT}\r\n`;
-                apTS += `${person.age} anos: R$ ${person.apT}\r\n`;
+                sacompTS += `${person.age} anos: ${real.format(person.sacompT)}\r\n`
+                enfTS += `${person.age} anos: ${real.format(person.enfT)}\r\n`;
+                apTS += `${person.age} anos: ${real.format(person.apT)}\r\n`;
+
+                tSacomp1 += person.sacompP;
+                tEnf1 += person.enfP;
+                tAp1 += person.apP;
+
+                tSacomp2 += person.sacompT;
+                tEnf2 += person.enfT;
+                tAp2 += person.apT;
             });
 
-            e1.innerHTML = `<span id="f1">${sacompTitle}</span>${sacompPS}\r\n<span id="f2">${enfTitle}</span>${enfPS}\r\n<span id="f3">${apTitle}</span>${apPS}`;
-            e2.innerHTML = `<span id="f4">${sacompTitle}</span>${sacompTS}\r\n<span id="f5">${enfTitle}</span>${enfTS}\r\n<span id="f6">${apTitle}</span>${apTS}`;
+            e1.innerHTML = `<span id="f1">${sacompTitle}</span>${sacompPS}Total ao mês: ${real.format(tSacomp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}`;
+            e2.innerHTML = `<span id="f4">${sacompTitle}</span>${sacompTS}Total ao mês: ${real.format(tSacomp2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}`;
         }
     }
 }
