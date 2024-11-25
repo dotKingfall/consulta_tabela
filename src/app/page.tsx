@@ -90,21 +90,21 @@ function changeBorder1(document: Document, dowhat: boolean){
     const l2 = document.getElementById('pjlabel');
 
     if(!dowhat){
-        l1!.style.border = "thin solid hsl(let(--twc-bg_main))";
+        l1!.style.border = "thin solid hsl(var(--twc-bg_main))";
         l1!.style.color = "#097969";
-        l1!.style.backgroundColor = "hsl(let(--twc-bg_main))";
+        l1!.style.backgroundColor = "hsl(var(--twc-bg_main))";
 
         l2!.style.border = "none";
-        l2!.style.color = "hsl(let(--twc-bg_main))";
+        l2!.style.color = "hsl(var(--twc-bg_main))";
         l2!.style.backgroundColor = "#097969";
     }
     else{
-        l2!.style.border = "thin solid hsl(let(--twc-bg_main))";
+        l2!.style.border = "thin solid hsl(var(--twc-bg_main))";
         l2!.style.color = "#097969";
-        l2!.style.backgroundColor = "hsl(let(--twc-bg_main))";
+        l2!.style.backgroundColor = "hsl(var(--twc-bg_main))";
 
         l1!.style.border = "none";
-        l1!.style.color = "hsl(let(--twc-bg_main))";
+        l1!.style.color = "hsl(var(--twc-bg_main))";
         l1!.style.backgroundColor = "#097969";
     }
 }
@@ -114,21 +114,21 @@ function changeBorder2(document: Document, dowhat: boolean){
     const l2 = document.getElementById('colabel');
 
     if(!dowhat){
-        l1!.style.border = "thin solid hsl(let(--twc-bg_main))";
+        l1!.style.border = "thin solid hsl(var(--twc-bg_main))";
         l1!.style.color = "#097969";
-        l1!.style.backgroundColor = "hsl(let(--twc-bg_main))";
+        l1!.style.backgroundColor = "hsl(var(--twc-bg_main))";
 
         l2!.style.border = "none";
-        l2!.style.color = "hsl(let(--twc-bg_main))";
+        l2!.style.color = "hsl(var(--twc-bg_main))";
         l2!.style.backgroundColor = "#097969";
     }
     else{
-        l2!.style.border = "thin solid hsl(let(--twc-bg_main))";
+        l2!.style.border = "thin solid hsl(var(--twc-bg_main))";
         l2!.style.color = "#097969";
-        l2!.style.backgroundColor = "hsl(let(--twc-bg_main))";
+        l2!.style.backgroundColor = "hsl(var(--twc-bg_main))";
 
         l1!.style.border = "none";
-        l1!.style.color = "hsl(let(--twc-bg_main))";
+        l1!.style.color = "hsl(var(--twc-bg_main))";
         l1!.style.backgroundColor = "#097969";
     }
 }
