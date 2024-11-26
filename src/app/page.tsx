@@ -162,7 +162,7 @@ function countPeople(document: Document){
         imgSrc = '/images/individual';
 
         ages.forEach((item) => {
-            if(item <= 18){}
+            if(item <= 18){position = 0;}
             else if(item <= 23){position = 1;} //I wonder why switch case doesn't work
             else if(item <= 28){position = 2;}
             else if(item <= 33){position = 3;}
@@ -206,7 +206,7 @@ function countPeople(document: Document){
         imgSrc = '/images/empresarial';
 
         ages.forEach((item) => {
-            if(item <= 18){}
+            if(item <= 18){position = 0;}
             else if(item <= 23){position = 1;} //I wonder why switch case doesn't work
             else if(item <= 28){position = 2;}
             else if(item <= 33){position = 3;}
@@ -321,8 +321,8 @@ function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: Array<Pe
             });
         }
 
-        e1.innerHTML = `<span id="f1">${ambTitle}</span>${ambPS}Total ao mês: ${real.format(tAmb1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}`;
-        e2.innerHTML = `<span id="f4">${ambTitle}</span>${ambTS}Total ao mês: ${real.format(tAmb2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}`;
+        e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f1">${ambTitle}</span>${ambPS}Total ao mês: ${real.format(tAmb1)}`;
+        e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f4">${ambTitle}</span>${ambTS}Total ao mês: ${real.format(tAmb2)}`;
     }
     else{
         let sacompPS = '';
@@ -360,8 +360,8 @@ function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: Array<Pe
                 tAp2 += person.apT;
             });
 
-            e1.innerHTML = `<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n`;
-            e2.innerHTML = `<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}\r\n`;
+            e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n`;
+            e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n`;
         }
         else{
             pjArr.forEach((person) => {
@@ -382,8 +382,8 @@ function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: Array<Pe
                 tAp2 += person.apT;
             });
 
-            e1.innerHTML = `<span id="f1">${sacompTitle}</span>${sacompPS}Total ao mês: ${real.format(tSacomp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}`;
-            e2.innerHTML = `<span id="f4">${sacompTitle}</span>${sacompTS}Total ao mês: ${real.format(tSacomp2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}`;
+            e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f1">${sacompTitle}</span>${sacompPS}Total ao mês: ${real.format(tSacomp1)}`;
+            e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f4">${sacompTitle}</span>${sacompTS}Total ao mês: ${real.format(tSacomp2)}`;
         }
     }
 }
@@ -554,100 +554,102 @@ if(typeof window !== 'undefined'){
 }
 
 function readJson(){
-  j_places.forEach((item) => {
-    const tmp = new Onde(item.id, item.name);
-    places.push(tmp);
-  });
-
-  j_AOdontoParcial.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    aOdontoParcial.push(tmp);
-  });
-
-  j_AOdontoTotal.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    aOdontoTotal.push(tmp);
-  });
-
-  j_AParcial.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    aParcial.push(tmp);
-  });
-
-  j_ATotal.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    aTotal.push(tmp);
-  });
-
-  j_DOdontoParcial.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    dOdontoParcial.push(tmp);
-  });
-
-  j_DOdontoTotal.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    dOdontoTotal.push(tmp);
-  });
-
-  j_DParcial.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    dParcial.push(tmp);
-  });
-
-  j_DTotal.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    dTotal.push(tmp);
-  });
-
-  j_GOdontoParcial.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    gOdontoParcial.push(tmp);
-  });
-
-  j_GOdontoTotal.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    gOdontoTotal.push(tmp);
-  });
-
-  j_GParcial.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    gParcial.push(tmp);
-  });
-
-  j_GTotal.forEach((item) => {
-    const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
-    gTotal.push(tmp);
-  });
-
-  j_AEParcial.forEach((item) => {
-    const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
-    aeParcial.push(tmp);
-  });
-
-  j_AETotal.forEach((item) => {
-    const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
-    aeTotal.push(tmp);
-  });
-
-  j_DEParcial.forEach((item) => {
-    const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
-    deParcial.push(tmp);
-  });
-
-  j_DETotal.forEach((item) => {
-    const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
-    deTotal.push(tmp);
-  });
-
-  j_GEParcial.forEach((item) => {
-    const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
-    geParcial.push(tmp);
-  });
-
-  j_GETotal.forEach((item) => {
-    const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
-    geTotal.push(tmp);
-  });
+  if(places.length === 0){
+    j_places.forEach((item) => {
+      const tmp = new Onde(item.id, item.name);
+      places.push(tmp);
+    });
+  
+    j_AOdontoParcial.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      aOdontoParcial.push(tmp);
+    });
+  
+    j_AOdontoTotal.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      aOdontoTotal.push(tmp);
+    });
+  
+    j_AParcial.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      aParcial.push(tmp);
+    });
+  
+    j_ATotal.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      aTotal.push(tmp);
+    });
+  
+    j_DOdontoParcial.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      dOdontoParcial.push(tmp);
+    });
+  
+    j_DOdontoTotal.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      dOdontoTotal.push(tmp);
+    });
+  
+    j_DParcial.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      dParcial.push(tmp);
+    });
+  
+    j_DTotal.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      dTotal.push(tmp);
+    });
+  
+    j_GOdontoParcial.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      gOdontoParcial.push(tmp);
+    });
+  
+    j_GOdontoTotal.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      gOdontoTotal.push(tmp);
+    });
+  
+    j_GParcial.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      gParcial.push(tmp);
+    });
+  
+    j_GTotal.forEach((item) => {
+      const tmp = new Individual(item.ac, item.amb, item.enf, item.ap);
+      gTotal.push(tmp);
+    });
+  
+    j_AEParcial.forEach((item) => {
+      const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
+      aeParcial.push(tmp);
+    });
+  
+    j_AETotal.forEach((item) => {
+      const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
+      aeTotal.push(tmp);
+    });
+  
+    j_DEParcial.forEach((item) => {
+      const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
+      deParcial.push(tmp);
+    });
+  
+    j_DETotal.forEach((item) => {
+      const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
+      deTotal.push(tmp);
+    });
+  
+    j_GEParcial.forEach((item) => {
+      const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
+      geParcial.push(tmp);
+    });
+  
+    j_GETotal.forEach((item) => {
+      const tmp = new Empresarial(item.ac, item.sacomp, item.enf, item.ap);
+      geTotal.push(tmp);
+    });
+  }
 }
 
 function changeTheme(document: Document){
