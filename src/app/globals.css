@@ -108,6 +108,10 @@ main, #footerimgs{
   font-family: 'Roboto Condensed';
 }
 
+#estadoOptions{
+  cursor: pointer;
+}
+
 #idade{
   background-color: hsl(var(--twc-bg_main));
   color: hsl(var(--twc-text_main)); opacity: .75;
@@ -280,4 +284,14 @@ tbody{
   color: #097969;
   font-family: 'Roboto Condensed';
   font-size: 1.2em;
+}
+
+.promolabel{
+  padding-left: 10px;
+}
+
+.promo{
+  background-color: hsl(var(--twc-bg_main));
+  color: hsl(var(--twc-text_secondary));
+  text-align: center;
 }

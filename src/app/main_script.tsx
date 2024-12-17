@@ -77,7 +77,7 @@ export default function MainScript(){
     <div>
       <header>
         <label className="switch">
-          <input id="themeSelector" type="checkbox" defaultChecked onClick={() => changeTheme(document)} />
+          <input id="themeSelector" type="checkbox" onClick={() => changeTheme(document)} />
           <span className="slider"></span>
         </label>
 
@@ -93,6 +93,9 @@ export default function MainScript(){
             <select name="estado" id="estadoOptions" onChange={(e) => {lugar = e.currentTarget.value;}}>
               <option>Carregando...</option>
             </select>
+
+            <label className='promolabel'>Desconto (%): </label>
+            <input type='number' className='promo' defaultValue={-1} min={0} max={100}></input>
 
             <div id='radialsPersona'>
               <label id='pflabel' className='selects' onClick={() => {
@@ -190,6 +193,16 @@ if(typeof window !== 'undefined'){
   setTimeout(() => {
     populatePlace(document);
   }, 500);
+
+  let theme = localStorage.getItem('theme');
+  document.documentElement.setAttribute('data-theme', theme || 'dark');
+
+  if(theme === 'dark'){
+    document.getElementById('themeSelector')?.setAttribute('checked', 'true');
+  }
+  else if (theme === 'light'){
+    document.getElementById('themeSelector')?.removeAttribute('checked');
+  }
 }
 
 export function populatePlace(document: Document){
@@ -213,9 +226,11 @@ function changeTheme(document: Document){
 
   if(box!.checked == true){
     document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
   }
   else{
     document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
   }
 }
 
