@@ -95,7 +95,7 @@ export default function MainScript(){
             </select>
 
             <label className='promolabel'>Desconto (%): </label>
-            <input type='number' className='promo' defaultValue={-1} min={0} max={100}></input>
+            <input type='number' onChange={() =>{savePromoValue(document)}} id='promo' defaultValue={0} min={0} max={100}></input>
 
             <div id='radialsPersona'>
               <label id='pflabel' className='selects' onClick={() => {
@@ -192,9 +192,10 @@ export default function MainScript(){
 if(typeof window !== 'undefined'){
   setTimeout(() => {
     populatePlace(document);
+    populatePromo(document);
   }, 500);
 
-  let theme = localStorage.getItem('theme');
+  const theme = localStorage.getItem('theme');
   document.documentElement.setAttribute('data-theme', theme || 'dark');
 
   if(theme === 'dark'){
@@ -205,7 +206,7 @@ if(typeof window !== 'undefined'){
   }
 }
 
-export function populatePlace(document: Document){
+function populatePlace(document: Document){
   const parent = document.getElementById('estadoOptions');
 
   for(let i = 0; i < places.length; i++){
@@ -280,6 +281,17 @@ function changeBorder2(document: Document, dowhat: boolean){
       l1!.style.color = "hsl(var(--twc-bg_main))";
       l1!.style.backgroundColor = "#097969";
   }
+}
+
+function savePromoValue(document: Document){
+  const tmp = document.getElementById('promo') as HTMLInputElement;
+  localStorage.setItem('promo', tmp.value);
+}
+
+function populatePromo(document: Document){
+  const el = document.getElementById('promo') as HTMLInputElement;
+  const promo = localStorage.getItem('promo')
+  el.value = promo || '0';
 }
 
 function readJson(){

@@ -6,6 +6,11 @@ export function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: A
     const e2 = document.getElementById('edtb2')!;
 
     const real = new Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'});
+    
+    //Tmp para desconto
+    const dtmp1 = document.getElementById('promo') as HTMLInputElement;
+    const dtmp2 = Number(dtmp1.value) / 100;
+    const desconto = (1 - dtmp2).toPrecision(3);
 
     if(ispj === 0){
         let ambPS = '';
@@ -30,41 +35,41 @@ export function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: A
 
         if(isOdonto === 1){
             pfArr.forEach((person) => {
-                ambPS += `${person.age} anos: ${real.format(person.ambOP)}\r\n`;
-                enfPS += `${person.age} anos: ${real.format(person.enfOP)}\r\n`;
-                apPS +=`${person.age} anos: ${real.format(person.apOP)}\r\n`;
+                ambPS += `${person.age} anos: ${real.format(person.ambOP * Number(desconto))}\r\n`;
+                enfPS += `${person.age} anos: ${real.format(person.enfOP * Number(desconto))}\r\n`;
+                apPS +=`${person.age} anos: ${real.format(person.apOP * Number(desconto))}\r\n`;
     
-                ambTS += `${person.age} anos: ${real.format(person.ambOT)}\r\n`;
-                enfTS += `${person.age} anos: ${real.format(person.enfOT)}\r\n`;
-                apTS +=`${person.age} anos: ${real.format(person.apOT)}\r\n`;
+                ambTS += `${person.age} anos: ${real.format(person.ambOT * Number(desconto))}\r\n`;
+                enfTS += `${person.age} anos: ${real.format(person.enfOT * Number(desconto))}\r\n`;
+                apTS +=`${person.age} anos: ${real.format(person.apOT * Number(desconto))}\r\n`;
 
-                tAmb1 += person.ambOP;
-                tEnf1 += person.enfOP;
-                tAp1 += person.apOP;
+                tAmb1 += person.ambOP * Number(desconto);
+                tEnf1 += person.enfOP * Number(desconto);
+                tAp1 += person.apOP * Number(desconto);
 
-                tAmb2 += person.ambOT;
-                tEnf2 += person.enfOT;
-                tAp2 += person.apOT;
+                tAmb2 += person.ambOT * Number(desconto);
+                tEnf2 += person.enfOT * Number(desconto);
+                tAp2 += person.apOT * Number(desconto);
 
             });
         }
         else{
             pfArr.forEach((person) => {
-                ambPS += `${person.age} anos: ${real.format(person.ambP)}\r\n`;
-                enfPS += `${person.age} anos: ${real.format(person.enfP)}\r\n`;
-                apPS +=`${person.age} anos: ${real.format(person.apP)}\r\n`;
+                ambPS += `${person.age} anos: ${real.format(person.ambP * Number(desconto))}\r\n`;
+                enfPS += `${person.age} anos: ${real.format(person.enfP * Number(desconto))}\r\n`;
+                apPS +=`${person.age} anos: ${real.format(person.apP * Number(desconto))}\r\n`;
     
-                ambTS += `${person.age} anos: ${real.format(person.ambT)}\r\n`;
-                enfTS += `${person.age} anos: ${real.format(person.enfT)}\r\n`;
-                apTS +=`${person.age} anos: ${real.format(person.apT)}\r\n`;
+                ambTS += `${person.age} anos: ${real.format(person.ambT * Number(desconto))}\r\n`;
+                enfTS += `${person.age} anos: ${real.format(person.enfT * Number(desconto))}\r\n`;
+                apTS +=`${person.age} anos: ${real.format(person.apT * Number(desconto))}\r\n`;
 
-                tAmb1 += person.ambP;
-                tEnf1 += person.enfP;
-                tAp1 += person.apP;
+                tAmb1 += person.ambP * Number(desconto);
+                tEnf1 += person.enfP * Number(desconto);
+                tAp1 += person.apP * Number(desconto);
                 
-                tAmb2 += person.ambT;
-                tEnf2 += person.enfT;
-                tAp2 += person.apT;
+                tAmb2 += person.ambT * Number(desconto);
+                tEnf2 += person.enfT * Number(desconto);
+                tAp2 += person.apT * Number(desconto);
             });
         }
 
@@ -94,17 +99,17 @@ export function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: A
 
         if(parseInt(lugar) != 1){
             pjArr.forEach((person) => {
-                enfPS += `${person.age} anos: ${real.format(person.enfP)}\r\n`;
-                apPS += `${person.age} anos: ${real.format(person.apP)}\r\n`;
+                enfPS += `${person.age} anos: ${real.format(person.enfP * Number(desconto))}\r\n`;
+                apPS += `${person.age} anos: ${real.format(person.apP * Number(desconto))}\r\n`;
 
-                enfTS += `${person.age} anos: ${real.format(person.enfT)}\r\n`;
-                apTS += `${person.age} anos: ${real.format(person.apT)}\r\n`;
+                enfTS += `${person.age} anos: ${real.format(person.enfT * Number(desconto))}\r\n`;
+                apTS += `${person.age} anos: ${real.format(person.apT * Number(desconto))}\r\n`;
 
-                tEnf1 += person.enfP;
-                tAp1 += person.apP;
+                tEnf1 += person.enfP * Number(desconto);
+                tAp1 += person.apP * Number(desconto);
 
-                tEnf2 += person.enfT;
-                tAp2 += person.apT;
+                tEnf2 += person.enfT * Number(desconto);
+                tAp2 += person.apT * Number(desconto);
             });
 
             e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n`;
@@ -112,21 +117,21 @@ export function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: A
         }
         else{
             pjArr.forEach((person) => {
-                sacompPS += `${person.age} anos: ${real.format(person.sacompP)}\r\n`
-                enfPS += `${person.age} anos: ${real.format(person.enfP)}\r\n`;
-                apPS += `${person.age} anos: ${real.format(person.apP)}\r\n`;
+                sacompPS += `${person.age} anos: ${real.format(person.sacompP * Number(desconto))}\r\n`
+                enfPS += `${person.age} anos: ${real.format(person.enfP * Number(desconto))}\r\n`;
+                apPS += `${person.age} anos: ${real.format(person.apP * Number(desconto))}\r\n`;
                 
-                sacompTS += `${person.age} anos: ${real.format(person.sacompT)}\r\n`
-                enfTS += `${person.age} anos: ${real.format(person.enfT)}\r\n`;
-                apTS += `${person.age} anos: ${real.format(person.apT)}\r\n`;
+                sacompTS += `${person.age} anos: ${real.format(person.sacompT * Number(desconto))}\r\n`
+                enfTS += `${person.age} anos: ${real.format(person.enfT * Number(desconto))}\r\n`;
+                apTS += `${person.age} anos: ${real.format(person.apT * Number(desconto))}\r\n`;
 
-                tSacomp1 += person.sacompP;
-                tEnf1 += person.enfP;
-                tAp1 += person.apP;
+                tSacomp1 += person.sacompP * Number(desconto);
+                tEnf1 += person.enfP * Number(desconto);
+                tAp1 += person.apP * Number(desconto);
 
-                tSacomp2 += person.sacompT;
-                tEnf2 += person.enfT;
-                tAp2 += person.apT;
+                tSacomp2 += person.sacompT * Number(desconto);
+                tEnf2 += person.enfT * Number(desconto);
+                tAp2 += person.apT * Number(desconto);
             });
 
             e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f1">${sacompTitle}</span>${sacompPS}Total ao mês: ${real.format(tSacomp1)}`;

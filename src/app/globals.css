@@ -290,8 +290,14 @@ tbody{
   padding-left: 10px;
 }
 
-.promo{
+#promo{
   background-color: hsl(var(--twc-bg_main));
-  color: hsl(var(--twc-text_secondary));
+  color: #097969;
   text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+   margin: 3;
 }
