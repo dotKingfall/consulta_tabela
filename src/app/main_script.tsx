@@ -77,7 +77,7 @@ export default function MainScript(){
     <div>
       <header>
         <label className="switch">
-          <input id="themeSelector" type="checkbox" onClick={() => changeTheme(document)} />
+          <input id="themeSelector" type="checkbox" defaultChecked onClick={() => changeTheme(document)} />
           <span className="slider"></span>
         </label>
 
