@@ -185,9 +185,20 @@ input[type=radio]{
   padding-left: 10px;
 }
 
-#ages button{
-  width: 20%;
+#agb1{
+  width: 10%;
   font-size: 1.2em;
+  float: inline-end;
+
+  background-color: #097969;
+  border: 5px solid rgba(9, 121, 105, .5);
+  color: hsl(var(--twc-bg_main));
+  margin-right: 10px;
+}
+
+#agb2{
+  width: 60px;
+  font-size: .8em;
   float: inline-end;
 
   background-color: #097969;

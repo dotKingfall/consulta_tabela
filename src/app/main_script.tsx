@@ -129,7 +129,10 @@ export default function MainScript(){
 
         <div id='ages'>
           <input type='text' inputMode='numeric' placeholder='Idade (Separadas por ponto)' id='idade'></input>
-          <button onClick={() => {countPeople(document)}}>Gerar</button>
+          <div>
+            <button id='agb2' onClick={() => {ignoreDiscount(document)}}>Desconto</button>
+            <button id='agb1' onClick={() => {countPeople(document)}}>Gerar</button>
+          </div>
         </div>
 
         <div className='meta'>
@@ -286,6 +289,27 @@ function changeBorder2(document: Document, dowhat: boolean){
 function savePromoValue(document: Document){
   const tmp = document.getElementById('promo') as HTMLInputElement;
   localStorage.setItem('promo', tmp.value);
+}
+
+let ignoreDiscountValue = false;
+function ignoreDiscount(document: Document){
+  const tmp = document.getElementById('agb2')!.style;
+  const pvalue = document.getElementById('promo') as HTMLInputElement;
+
+  if(!ignoreDiscountValue){ //AJEITAR ISSO, NÃO RECONHECENDO TEXT-DECOR
+    tmp!.setProperty('text-decoration', 'line-through');
+    pvalue.value = '0';
+    ignoreDiscountValue = true;
+    
+    countPeople(document);
+  }
+  else{
+    tmp!.setProperty('text-decoration', 'none');
+    pvalue.value = localStorage.getItem('promo') || '0';
+    ignoreDiscountValue = false;
+
+    countPeople(document);
+  }
 }
 
 function populatePromo(document: Document){
