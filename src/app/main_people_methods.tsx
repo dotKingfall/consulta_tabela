@@ -114,7 +114,7 @@ export function countPeople(document: Document){
     document.getElementById('m2')!.innerHTML = total.toString();
     
     showImg(document, imgSrc);
-    writeMessage(document, pfArr, pjArr);
+    writeMessage(document, pfArr, pjArr, total);
 
     pfArr = []; pjArr = [];
 }

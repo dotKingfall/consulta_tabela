@@ -1,7 +1,7 @@
 import { PessoaF, PessoaJ } from "./main_classes";
 import { ispj, isOdonto, lugar } from "./main_script";
 
-export function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: Array<PessoaJ>){
+export function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: Array<PessoaJ>, total: number){
     const e1 = document.getElementById('edtb1')!;
     const e2 = document.getElementById('edtb2')!;
 
@@ -73,8 +73,14 @@ export function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: A
             });
         }
 
-        e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f1">${ambTitle}</span>${ambPS}Total ao mês: ${real.format(tAmb1)}`;
-        e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f4">${ambTitle}</span>${ambTS}Total ao mês: ${real.format(tAmb2)}`;
+        if(Number(total) > 1){
+            e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f1">${ambTitle}</span>${ambPS}Total ao mês: ${real.format(tAmb1)}`;
+            e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f4">${ambTitle}</span>${ambTS}Total ao mês: ${real.format(tAmb2)}`;
+        }
+        else{
+            e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}\r\n<span id="f2">${enfTitle}</span>${enfPS}\r\n<span id="f1">${ambTitle}</span>${ambPS}`;
+            e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}\r\n<span id="f5">${enfTitle}</span>${enfTS}\r\n<span id="f4">${ambTitle}</span>${ambTS}`;
+        }
     }
     else{
         let sacompPS = '';
@@ -112,8 +118,14 @@ export function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: A
                 tAp2 += person.apT * Number(desconto);
             });
 
-            e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n`;
-            e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n`;
+            if(Number(total) > 1){
+                e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n`;
+                e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n`;
+            }
+            else{
+                e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}\r\n<span id="f2">${enfTitle}</span>${enfPS}\r\n`;
+                e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}\r\n<span id="f5">${enfTitle}</span>${enfTS}\r\n`;
+            }
         }
         else{
             pjArr.forEach((person) => {
@@ -134,8 +146,14 @@ export function writeMessage(document: Document, pfArr: Array<PessoaF>, pjArr: A
                 tAp2 += person.apT * Number(desconto);
             });
 
-            e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f1">${sacompTitle}</span>${sacompPS}Total ao mês: ${real.format(tSacomp1)}`;
-            e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f4">${sacompTitle}</span>${sacompTS}Total ao mês: ${real.format(tSacomp2)}`;
+            if(Number(total) > 1){
+                e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}Total ao mês: ${real.format(tAp1)}\r\n\r\n<span id="f2">${enfTitle}</span>${enfPS}Total ao mês: ${real.format(tEnf1)}\r\n\r\n<span id="f1">${sacompTitle}</span>${sacompPS}Total ao mês: ${real.format(tSacomp1)}`;
+                e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}Total ao mês: ${real.format(tAp2)}\r\n\r\n<span id="f5">${enfTitle}</span>${enfTS}Total ao mês: ${real.format(tEnf2)}\r\n\r\n<span id="f4">${sacompTitle}</span>${sacompTS}Total ao mês: ${real.format(tSacomp2)}`;
+            }
+            else{
+                e1.innerHTML = `<span id="f3">${apTitle}</span>${apPS}\r\n<span id="f2">${enfTitle}</span>${enfPS}\r\n\r\n<span id="f1">${sacompTitle}</span>${sacompPS}`;
+                e2.innerHTML = `<span id="f6">${apTitle}</span>${apTS}\r\n<span id="f5">${enfTitle}</span>${enfTS}\r\n\r\n<span id="f4">${sacompTitle}</span>${sacompTS}`;
+            }
         }
     }
 }
