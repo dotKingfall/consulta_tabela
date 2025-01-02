@@ -82,7 +82,7 @@ export default function MainScript(){
         </label>
 
         <div id="topbar">
-          <div>Consulta de Valores (Nov/2024)</div>
+          <div>Consulta de Valores (Jan/2025)</div>
         </div>
       </header>
 
